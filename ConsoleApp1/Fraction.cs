@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
-    public class Fraction : IComparable
+    public class Fraction : IComparable, IEquatable<Fraction>
     {
         private int numerator;
         private int denominator;
@@ -58,6 +58,29 @@ namespace ConsoleApp1
                 return this.Numerator.CompareTo(otherFraction.Numerator);
             else
                 throw new ArgumentException("Object is not a Fraction");
+        }
+
+        public bool Equals(Fraction other)
+        {
+            if (other == null)
+                return false;
+
+            if (this.Numerator == other.Numerator && this.Denominator == other.Denominator)
+                return true;
+            else
+                return false;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            Fraction otherFraction = obj as Fraction;
+            if (otherFraction == null)
+                return false;
+            else
+                return Equals(otherFraction);
         }
     }
 }
