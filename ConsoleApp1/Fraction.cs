@@ -47,17 +47,21 @@ namespace ConsoleApp1
             return new Fraction(a.Numerator * b.Denominator, a.Denominator * b.Numerator);
         }
 
-        public override string ToString() => $"{Numerator} / {Denominator}";
+        public override string ToString() => $"{Numerator}/{Denominator}";
      
         public int CompareTo(object? obj)
         {
             if (obj == null) return 1;
 
             Fraction otherFraction = obj as Fraction;
-            if (otherFraction != null)
-                return this.Numerator.CompareTo(otherFraction.Numerator);
-            else
+
+            if (otherFraction == null)
                 throw new ArgumentException("Object is not a Fraction");
+
+            if (this.Numerator.CompareTo(otherFraction.Numerator) == 0 && this.Denominator.CompareTo(otherFraction.Denominator) == 0)
+                return 0;
+            else
+                return this.Numerator.CompareTo(otherFraction.Numerator) + this.Denominator.CompareTo(otherFraction.Denominator);
         }
 
         public bool Equals(Fraction other)
@@ -81,6 +85,11 @@ namespace ConsoleApp1
                 return false;
             else
                 return Equals(otherFraction);
+        }
+
+        public override int GetHashCode()
+        {
+            return Numerator + Denominator;
         }
     }
 }
