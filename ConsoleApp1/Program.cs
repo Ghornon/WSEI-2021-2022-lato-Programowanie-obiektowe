@@ -44,13 +44,17 @@ namespace ConsoleApp1
 
                 Console.WriteLine();
 
+                Console.WriteLine($"RoundDown A: {a.RoundDown()}");
+
+                Console.WriteLine($"RoundUp A: {a.RoundUp()}");
+
                 Console.WriteLine($"CompareTo A to A: {a.CompareTo(a)}");
                 Console.WriteLine($"CompareTo A to B: {a.CompareTo(b)}");
                 Console.WriteLine($"CompareTo B to A: {b.CompareTo(a)}");
                 Console.WriteLine($"CompareTo A to D: {a.CompareTo(d)}");
                 Console.WriteLine($"CompareTo D to A: {d.CompareTo(a)}");
                 Console.WriteLine($"CompareTo D to 1 (ArgumentException expected): {d.CompareTo(1)}"); //ArgumentException expected
-
+                
             }
             catch (ArgumentException e)
             {

@@ -34,12 +34,12 @@ namespace ConsoleApp1
             this.denominator = oldFraction.Denominator;
         }
 
-        public static Fraction operator + (Fraction a) => a;
-        public static Fraction operator - (Fraction a) => new Fraction(-a.Numerator, a.Denominator);
-        public static Fraction operator + (Fraction a, Fraction b) => new Fraction(a.Numerator * b.Denominator + b.numerator * a.Denominator, a.Denominator * b.Denominator);
-        public static Fraction operator - (Fraction a, Fraction b) => a + (-b);
-        public static Fraction operator * (Fraction a, Fraction b) => new Fraction(a.Numerator * b.Denominator, a.Denominator * b.Denominator);
-        public static Fraction operator / (Fraction a, Fraction b)
+        public static Fraction operator +(Fraction a) => a;
+        public static Fraction operator -(Fraction a) => new Fraction(-a.Numerator, a.Denominator);
+        public static Fraction operator +(Fraction a, Fraction b) => new Fraction(a.Numerator * b.Denominator + b.numerator * a.Denominator, a.Denominator * b.Denominator);
+        public static Fraction operator -(Fraction a, Fraction b) => a + (-b);
+        public static Fraction operator *(Fraction a, Fraction b) => new Fraction(a.Numerator * b.Denominator, a.Denominator * b.Denominator);
+        public static Fraction operator /(Fraction a, Fraction b)
         {
             if (b.numerator == 0)
                 throw new DivideByZeroException();
@@ -48,7 +48,7 @@ namespace ConsoleApp1
         }
 
         public override string ToString() => $"{Numerator}/{Denominator}";
-     
+
         public int CompareTo(object? obj)
         {
             if (obj == null) return 1;
@@ -90,6 +90,17 @@ namespace ConsoleApp1
         public override int GetHashCode()
         {
             return Numerator + Denominator;
+        }
+
+        public double RoundDown() {
+            double number = (double)Numerator / (double)Denominator;
+            return Math.Floor(number);
+        }
+
+        public double RoundUp()
+        {
+            double number = (double)Numerator / (double)Denominator;
+            return Math.Ceiling(number);
         }
     }
 }
