@@ -15,6 +15,11 @@ namespace ConsoleApp1
         {
 
         }
+        public Fraction(Fraction oldFraction)
+        {
+            this.numerator = oldFraction.Numerator;
+            this.denominator = oldFraction.Denominator;
+        }
 
         public Fraction(int numerator, int denominator)
         {
@@ -23,15 +28,6 @@ namespace ConsoleApp1
 
             this.numerator = numerator;
             this.denominator = denominator;
-        }
-
-        public Fraction(Fraction oldFraction)
-        {
-            if (denominator == 0)
-                throw new ArgumentException("Denominator cannot be zero.");
-
-            this.numerator = oldFraction.Numerator;
-            this.denominator = oldFraction.Denominator;
         }
 
         public static Fraction operator +(Fraction a) => a;
