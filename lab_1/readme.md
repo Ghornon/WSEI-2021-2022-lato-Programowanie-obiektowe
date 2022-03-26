@@ -1,8 +1,5 @@
 # WSEI | 2021/2022 lato | labN/1/ISN | Programowanie obiektowe
 
-https://dirask.com/posts/WSEI-2021-2022-lato-labN-1-ISN-Programowanie-obiektowe-lab-1-pa3ek1
-
-<<<<<<< HEAD
 LAB1: git branch lab1
 =======
 ## Lab1
@@ -23,4 +20,3 @@ LAB1: git branch lab1
 # Docs reference
 
 [Fraction](docs.md)
->>>>>>> 6d427d280ff0a25e62ad43cd3d29dba1b402fcd9
