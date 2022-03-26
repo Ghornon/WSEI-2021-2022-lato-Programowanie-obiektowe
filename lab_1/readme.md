@@ -1,7 +1,7 @@
 # WSEI | 2021/2022 lato | labN/1/ISN | Programowanie obiektowe
 
-LAB1: git branch lab1
-=======
+https://dirask.com/posts/WSEI-2021-2022-lato-labN-1-IS-Programowanie-obiektowe-lab-1-D7XnAp
+
 ## Lab1
 
 -   [x] 1 Utwórz klasę Ułamek, a w niej:
