@@ -48,6 +48,6 @@ namespace ClassLibrary
         }
         public override int GetHashCode() => HashCode.Combine(Name, Status);
 
-        public override string ToString() => $"${Name} [${Status}]";
+        public override string ToString() => $"{Name} [{Status}]";
     }
 }

@@ -42,10 +42,10 @@ namespace ClassLibrary
         public override string ToString() => base.ToString();
     }
 
-    public class Student : Person
+    public class Student : Person, IEquatable<Student>
     {
         protected string group;
-        protected List<Task> tasks;
+        protected List<Task> tasks = new List<Task>();
         public string Group { get => group; set => group = value; }
 
         public Student(string name, int age, string group) : base(name, age)
@@ -85,12 +85,46 @@ namespace ClassLibrary
 
             for (int i = 0; i < tasks.Count; i++)
             {
-                result += prefix + i.ToString() + ". " + tasks[i];
+                result += "\r\n" + prefix + i.ToString() + ". " + tasks[i];
             }
 
             return result;
         }
 
-        public override string ToString() => $"Student: ${Name} (${Age} y.o.)\tGroup: ${Group}\tTasks: ${RenderTasks()}";
+        public override string ToString() => $"Student: {Name} ({Age} y.o.)\r\nGroup: {Group}\r\nTasks: {RenderTasks()}";
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            Student otherPerson = obj as Student;
+            if (otherPerson == null)
+                return false;
+            else
+                return Equals(otherPerson);
+        }
+        public bool Equals(Student other)
+        {
+            if (other == null)
+                return false;
+
+            if (Name == other.Name && Age == other.Age && Group == other.Group && RenderTasks() == other.RenderTasks())
+                return true;
+            else
+                return false;
+        }
+        public override int GetHashCode() => HashCode.Combine(Name, Age, Group, tasks);
     }
+
+    public class Teacher : Person
+    {
+        public Teacher(string name, int age) : base(name, age)
+        {
+
+        }
+
+        public override string ToString() => $"Teacher: {Name} ({Age} y.o.)";
+    }
+
 }
