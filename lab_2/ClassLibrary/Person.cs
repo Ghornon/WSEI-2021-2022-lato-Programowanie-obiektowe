@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
     public class Person : IEquatable<Person>
     {
-        private string name;
-        private int age;
+        protected string name;
+        protected int age;
         public string Name { get => name; set => name = value; }
         public int Age { get => age; set => age = value; }
 
@@ -19,11 +20,11 @@ namespace ClassLibrary
             if (obj == null)
                 return false;
 
-            Person otherFraction = obj as Person;
-            if (otherFraction == null)
+            Person otherPerson = obj as Person;
+            if (otherPerson == null)
                 return false;
             else
-                return Equals(otherFraction);
+                return Equals(otherPerson);
         }
         public bool Equals(Person other)
         {
@@ -39,5 +40,57 @@ namespace ClassLibrary
         public override int GetHashCode() => HashCode.Combine(Name, Age);
 
         public override string ToString() => base.ToString();
+    }
+
+    public class Student : Person
+    {
+        protected string group;
+        protected List<Task> tasks;
+        public string Group { get => group; set => group = value; }
+
+        public Student(string name, int age, string group) : base(name, age)
+        {
+            Group = group;
+        }
+
+        public Student(string name, int age, string group, List<Task> tasks) : base(name, age)
+        {
+            Group = group;
+            this.tasks = tasks;
+        }
+
+        public void AddTask(string taskName, TaskStatus taskStatus)
+        {
+            var task = new Task(taskName, taskStatus);
+            tasks.Add(task);
+        }
+
+        public void RemoveTask(int index)
+        {
+            tasks.RemoveAt(index);
+        }
+
+        public void UpdateTask(int index, TaskStatus taskStatus)
+        {
+            var task = tasks[index];
+            task.Status = taskStatus;
+
+            tasks.Insert(index, task);
+            tasks.RemoveAt(index + 1);
+        }
+
+        public string RenderTasks(string prefix = "\t")
+        {
+            string result = "";
+
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                result += prefix + i.ToString() + ". " + tasks[i];
+            }
+
+            return result;
+        }
+
+        public override string ToString() => $"Student: ${Name} (${Age} y.o.)\tGroup: ${Group}\tTasks: ${RenderTasks()}";
     }
 }
