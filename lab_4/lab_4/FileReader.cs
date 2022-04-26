@@ -11,7 +11,8 @@ namespace lab_4
         private long size;
         public string Name { get => name; }
         public string Path { get => path; }
-        public string Size { get => SizeSuffix(size); }
+        public long Size { get => size; }
+        public string SizeWithSuffix { get => SizeSuffix(size); }
         public string Extension { get => extension; }
         public File(string path, long size)
         {
@@ -43,19 +44,43 @@ namespace lab_4
     class FileReader
     {
         public List<File> FilesList = new List<File>();
+        public List<File> DirsList = new List<File>();
 
-        public FileReader(string path = ".")
+        public FileReader(string path = "C:\\Skany")
         {
-            foreach (string file in Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories))
+            try
             {
-                long length = new FileInfo(file).Length;
-                FilesList.Add(new File(file, length));
+                var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+                var dirs = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+
+                foreach (string file in files)
+                {
+                    long length = new FileInfo(file).Length;
+                    FilesList.Add(new File(file, length));
+                }
+
+                foreach (string dir in dirs)
+                {
+                    Console.WriteLine(dir);
+                }
+
             }
+            catch (UnauthorizedAccessException uAEx)
+            {
+                Console.WriteLine(uAEx.Message);
+            }
+            catch (PathTooLongException pathEx)
+            {
+                Console.WriteLine(pathEx.Message);
+            }
+
 
             foreach (var file in FilesList)
             {
-                Console.WriteLine($"{file.Name} {file.Path} {file.Size} {file.Extension}");
+                Console.WriteLine($"{file.Name} {file.Path} {file.SizeWithSuffix} {file.Extension}");
             }
         }
     }
+
+
 }
