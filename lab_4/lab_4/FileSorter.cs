@@ -17,7 +17,7 @@ namespace lab_4
             this.FilesList = FilesList;
         }
 
-        public string GetNodes()
+        private string GetNodes()
         {
             string nodes = "Nodes:\r\n\t\t\t[count]\t[total size]\r\n";
             nodes += "\tDirectories:";
@@ -46,6 +46,15 @@ namespace lab_4
             nodes += "\t" + tempFile.SizeWithSuffix;
 
             return nodes;
+        }
+
+        private string GetNodesBy()
+        {
+            string result = "\t ";
+
+
+
+            return result;
         }
 
         public override string ToString()

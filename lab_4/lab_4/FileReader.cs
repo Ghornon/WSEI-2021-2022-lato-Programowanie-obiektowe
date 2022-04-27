@@ -24,6 +24,7 @@ namespace lab_4
         public long Size { get => size; }
         public string SizeWithSuffix { get => SizeSuffix(size); }
         public FileTypes Type { get => type; }
+
         public Dir(string path, long size)
         {
             this.path = path;
