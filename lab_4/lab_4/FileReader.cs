@@ -64,19 +64,19 @@ namespace lab_4
             string[] images = { "png", "webp", "jpg", "gif", "tiff" };
             string[] audio = { "ogg", "mp2" };
             string[] video = { "mkv", "mp4", "webm" };
-            string[] document = { "txt", "doc", "docx", "xml", "xlmx" };
+            string[] document = { "txt", "doc", "docx", "xml", "xlmx", "pdf" };
 
             if (images.Contains(this.extension))
                 return FileTypes.image;
 
             if (audio.Contains(this.extension))
-                return FileTypes.image;
+                return FileTypes.audio;
 
             if (video.Contains(this.extension))
-                return FileTypes.image;
+                return FileTypes.video;
 
             if (document.Contains(this.extension))
-                return FileTypes.image;
+                return FileTypes.document;
 
             return FileTypes.other;
         }
@@ -106,12 +106,12 @@ namespace lab_4
 
             foreach (var file in FilesList)
             {
-                Console.WriteLine($"{file.Name} {file.Path} {file.SizeWithSuffix} {file.Extension}");
+                Console.WriteLine($"{file.Name} {file.Path} {file.SizeWithSuffix} {file.Extension} {file.Type}");
             }
 
             foreach (var dir in DirsList)
             {
-                Console.WriteLine($"{dir.Name} {dir.Path} {dir.SizeWithSuffix}");
+                Console.WriteLine($"{dir.Name} {dir.Path} {dir.SizeWithSuffix} {dir.Type}");
             }
         }
 
