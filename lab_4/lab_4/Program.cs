@@ -7,6 +7,9 @@ namespace lab_4
         static void Main(string[] args)
         {
             var a = new FileReader();
+            var b = new FileSorter(a.FilesList, a.DirsList);
+
+            Console.WriteLine(b.ToString());
         }
     }
 }
