@@ -115,7 +115,7 @@ namespace lab_4
             }
 
 
-            foreach (var file in FilesList)
+            /*foreach (var file in FilesList)
             {
                 Console.WriteLine($"{file.Name} {file.Path} {file.SizeWithSuffix} {file.Extension} {file.Type}");
             }
@@ -123,7 +123,7 @@ namespace lab_4
             foreach (var dir in DirsList)
             {
                 Console.WriteLine($"{dir.Name} {dir.Path} {dir.SizeWithSuffix} {dir.Type}");
-            }
+            }*/
         }
 
         private List<File> EnumerateFiles(string path = "C:\\Skany")
