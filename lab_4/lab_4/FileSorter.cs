@@ -15,11 +15,8 @@ namespace lab_4
         {
             this.Type = Type;
 
-            IEnumerable<File> files = from file in FilesList select file;
-
-            foreach (File file in files)
+            foreach (File file in FilesList)
             {
-                Count++;
                 TotalSize += file.Size;
                 if (MinSize >= file.Size || MinSize == 0)
                     MinSize = file.Size;
@@ -28,13 +25,13 @@ namespace lab_4
                     MaxSize = file.Size;
             }
 
-            if (Count == 0)
-                throw new ArgumentOutOfRangeException();
+            Count = FilesList.Count;
 
-            AvgSize = TotalSize / Count;
+            if (Count != 0)
+                AvgSize = TotalSize / Count;
         }
 
-        static readonly string[] SizeSuffixes = { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+        static readonly string[] SizeSuffixes = { "  ", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 
         static string SizeSuffix(long value)
         {
@@ -98,13 +95,59 @@ namespace lab_4
             return nodes;
         }
 
-        private string GetNodesBy()
+        public IEnumerable<Counter> GetNodesByType()
         {
-            string result = "\t ";
+            string[] types = { "image", "audio", "video", "document", "other" };
+
+            List<Counter> results = new List<Counter>();
+
+            foreach(string type in types)
+            {
+                IEnumerable<File> filteredFiles = from file in this.FilesList where file.Type.ToString() == type select file;
+                results.Add(new Counter(type, filteredFiles.ToList()));
+            }
+
+            return results;
+        }
+
+        public IEnumerable<Counter> GetNodesByExtension()
+        {
+            string[] extensions = { "png", "webp", "jpg", "gif", "tiff", "ogg", "mp2", "mkv", "mp4", "webm", "txt", "doc", "docx", "xml", "xlmx", "pdf" };
+
+            List<Counter> results = new List<Counter>();
+
+            foreach (string extension in extensions)
+            {
+                IEnumerable<File> filteredFiles = from file in this.FilesList where file.Extension.ToString() == extension select file;
+                results.Add(new Counter(extension, filteredFiles.ToList()));
+            }
+
+            return results;
+        }
+
+        public IEnumerable<Counter> GetNodesBySize()
+        {
+            IDictionary<string, long[]> sizes = new Dictionary<string, long[]>();
+            sizes.Add("      . <= 1KB", new long[] { 0, 1024 });
+            sizes.Add("1KB < . <= 1MB", new long[] { 1024, 1048576 });
+            sizes.Add("1MB < . <= 1GB", new long[] { 1048576, 1073741824 });
+            sizes.Add("1GB < .       ", new long[] { 1073741824, long.MaxValue });
 
 
+            List<Counter> results = new List<Counter>();
 
-            return result;
+            foreach(var size in sizes)
+            {
+                IEnumerable<File> filteredFiles = from file in this.FilesList where file.Size > size.Value[0] && file.Size <= size.Value[1] select file;
+                results.Add(new Counter(size.Key, filteredFiles.ToList()));
+            }
+
+            return results;
+        }
+
+        public string GetHeadline()
+        {
+            return "\t\t\t\t[count]\t\t[total size]\t[avg size]\t[min size]\t[max size]";
         }
 
         public override string ToString()

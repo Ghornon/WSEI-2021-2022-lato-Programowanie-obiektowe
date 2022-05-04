@@ -12,15 +12,31 @@ namespace lab_4
             var a = new FileReader("C:\\aaa");
             var b = new FileCounter(a.FilesList, a.DirsList);
 
-
-            //IEnumerable<File> files = from file in a.FilesList where file.Type == FileTypes.image select file;
-            List<Counter> byTypes = new List<Counter>();
-
-            byTypes.Add(new Counter("images", a.FilesList));
-
             Console.WriteLine(b.ToString());
 
-            foreach(var counter in byTypes)
+            Console.WriteLine($"\r\n\tBy types:\r\n{b.GetHeadline()}");
+  
+            IEnumerable<Counter> byTypes = b.GetNodesByType();
+
+            foreach (var counter in byTypes)
+            {
+                Console.WriteLine(counter.ToString());
+            }
+
+            Console.WriteLine($"\r\n\tBy extensions:\r\n{b.GetHeadline()}");
+
+            IEnumerable<Counter> byExtension = b.GetNodesByExtension();
+
+            foreach (var counter in byExtension)
+            {
+                Console.WriteLine(counter.ToString());
+            }
+
+            Console.WriteLine($"\r\n\tBy size:\r\n{b.GetHeadline()}");
+
+            IEnumerable<Counter> bySize = b.GetNodesBySize();
+
+            foreach (var counter in bySize)
             {
                 Console.WriteLine(counter.ToString());
             }
