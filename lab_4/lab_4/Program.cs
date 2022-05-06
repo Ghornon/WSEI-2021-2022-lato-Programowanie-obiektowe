@@ -40,6 +40,25 @@ namespace lab_4
             {
                 Console.WriteLine(counter.ToString());
             }
+
+            Console.WriteLine($"\r\n\tOrdered by name:\r\n\t\t\t\t[size]\t\t[path]");
+
+            IEnumerable<File> orderedByName = a.FilesList.OrderBy(file => file.Name);
+
+            foreach (var file in orderedByName)
+            {
+                Console.WriteLine($"\t\t{file.Name}\t\t{file.SizeWithSuffix}\t\t{file.Path}");
+            }
+
+            Console.WriteLine($"\r\n\tOrdered by sizes (from biggest):\r\n\t\t\t\t[size]\t\t[path]");
+
+            IEnumerable<File> orderedBySize= a.FilesList.OrderByDescending(file => file.Size);
+
+            foreach (var file in orderedBySize)
+            {
+                Console.WriteLine($"\t\t{file.Name}\t\t{file.SizeWithSuffix}\t\t{file.Path}");
+            }
+
         }
     }
 }
