@@ -59,6 +59,11 @@ namespace lab_06
                 }*/
             }
 
+            //6. Ilość rekordów, dla których podano oceny (nie null i więcej niż 0)
+            var rowCountMarks = (from user in users where user.Marks != null && user.Marks.Length > 0 select users).Count();
+
+            Console.WriteLine($"6. Ilość rekordów, dla których podano oceny (nie null i więcej niż 0): {rowCountMarks}");
+
         }
     }
 }
