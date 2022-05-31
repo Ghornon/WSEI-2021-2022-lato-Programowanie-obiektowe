@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
@@ -49,7 +46,7 @@ namespace ConsoleApp.Logger
         public int Receive(byte[] buffer)
         {
             /*
-             * Stuck on 
+             * Stuck on
              * Client.Socket.Receive() empty response;
             */
 

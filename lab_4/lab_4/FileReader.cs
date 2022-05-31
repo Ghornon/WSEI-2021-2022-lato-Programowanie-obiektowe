@@ -14,6 +14,7 @@ namespace lab_4
         document,
         other
     };
+
     class Dir
     {
         protected string name, path;
@@ -23,10 +24,14 @@ namespace lab_4
         public string Path { get => path; }
         public long Size { get => size; }
         public string SizeWithSuffix { get => SizeSuffix(size); }
+
+        protected IDictionary<FileTypes, string[]> fileTypesDictionary = new Dictionary<FileTypes, string[]?>();
         public FileTypes Type { get => type; }
 
         public Dir(string path, long size)
         {
+            fileTypesDictionary.Add(FileTypes.dir, null);
+
             this.path = path;
             this.size = size;
             this.name = path.Split('\\').Last();
@@ -56,28 +61,33 @@ namespace lab_4
         public string Extension { get => extension; }
         public File(string path, long size) : base (path, size)
         {
+            /* Seeds of file type by extension */
+
+            string[] images = { "png", "webp", "jpg", "gif", "tiff" };
+            string[] audios = { "ogg", "mp2" };
+            string[] videos = { "mkv", "mp4", "webm" };
+            string[] documents = { "txt", "doc", "docx", "xml", "xlmx", "pdf" };
+
+            fileTypesDictionary.Add(FileTypes.image, images);
+            fileTypesDictionary.Add(FileTypes.audio, audios);
+            fileTypesDictionary.Add(FileTypes.video, videos);
+            fileTypesDictionary.Add(FileTypes.document, documents);
+            fileTypesDictionary.Add(FileTypes.other, null);
+
+            /* Gettign file type */
+
             this.extension = this.name.Split('.').Last();
             this.type = GetFileType();
         }
 
         private FileTypes GetFileType()
         {
-            string[] images = { "png", "webp", "jpg", "gif", "tiff" };
-            string[] audio = { "ogg", "mp2" };
-            string[] video = { "mkv", "mp4", "webm" };
-            string[] document = { "txt", "doc", "docx", "xml", "xlmx", "pdf" };
-
-            if (images.Contains(this.extension))
-                return FileTypes.image;
-
-            if (audio.Contains(this.extension))
-                return FileTypes.audio;
-
-            if (video.Contains(this.extension))
-                return FileTypes.video;
-
-            if (document.Contains(this.extension))
-                return FileTypes.document;
+            foreach (var element in fileTypesDictionary)
+            {
+                var extensions = element.Value;
+                if (extensions != null && extensions.Length != 0 && extensions.Contains(this.extension))
+                    return element.Key;
+            }
 
             return FileTypes.other;
         }
@@ -88,12 +98,12 @@ namespace lab_4
         public List<Dir> DirsList = new List<Dir>();
         public List<File> FilesList = new List<File>();
 
-        public FileReader(string path = "C:\\Skany")
+        public FileReader(string path)
         {
             try
             {
-                FilesList = EnumerateFiles();
-                DirsList = EnumerateDirectories();
+                FilesList = EnumerateFiles(path);
+                DirsList = EnumerateDirectories(path);
             }
             catch (UnauthorizedAccessException uAEx)
             {
