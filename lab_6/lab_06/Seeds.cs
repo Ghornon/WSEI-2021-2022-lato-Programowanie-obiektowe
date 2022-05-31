@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lab_06
 {
-    class Seeds
+    internal class Seeds
     {
         public List<User> users = new List<User>();
+
         public Seeds()
         {
             this.Create();
@@ -97,23 +95,23 @@ namespace lab_06
                  new DateTime(2022, 2, 1, 8, 31, 52)
            ));
 
-           users.Add(new User(
-                 "Faustyna Zawadzka",
-                 "STUDENT",
-                 22,
-                 new int[] { 3, 4, 5, 5 },
-                 new DateTime(2021, 5, 1, 8, 31, 52),
-                 new DateTime(2022, 2, 1, 8, 31, 52)
-           ));
-
-           users.Add(new User(
-                 "Jowita Sadowska",
-                 "STUDENT",
-                 22,
-                 new int[] { 2, 4, 5, 5 },
-                 new DateTime(2021, 5, 1, 8, 31, 52),
-                 new DateTime(2022, 2, 1, 8, 31, 52)
+            users.Add(new User(
+                  "Faustyna Zawadzka",
+                  "STUDENT",
+                  22,
+                  new int[] { 3, 4, 5, 5 },
+                  new DateTime(2021, 5, 1, 8, 31, 52),
+                  new DateTime(2022, 2, 1, 8, 31, 52)
             ));
+
+            users.Add(new User(
+                  "Jowita Sadowska",
+                  "STUDENT",
+                  22,
+                  new int[] { 2, 4, 5, 5 },
+                  new DateTime(2021, 5, 1, 8, 31, 52),
+                  new DateTime(2022, 2, 1, 8, 31, 52)
+             ));
 
             users.Add(new User(
                  "Norbert Jakubowski",
@@ -124,14 +122,14 @@ namespace lab_06
                  new DateTime(2022, 3, 1, 9, 11, 52)
            ));
 
-           users.Add(new User(
-                "Ludwik Zalewski",
-                "STUDENT",
-                22,
-                new int[] { 2, 4, 2, 2 },
-                new DateTime(2021, 5, 2, 9, 11, 52),
-                new DateTime(2022, 3, 1, 9, 11, 52)
-            ));
+            users.Add(new User(
+                 "Ludwik Zalewski",
+                 "STUDENT",
+                 22,
+                 new int[] { 2, 4, 2, 2 },
+                 new DateTime(2021, 5, 2, 9, 11, 52),
+                 new DateTime(2022, 3, 1, 9, 11, 52)
+             ));
 
             users.Add(new User(
                 "Norbert Szczepański",
@@ -151,14 +149,14 @@ namespace lab_06
                 new DateTime(2022, 3, 1, 9, 11, 52)
             ));
 
-           users.Add(new User(
-                "Janusz Mazurek",
-                "STUDENT",
-                22,
-                new int[] { 3, 4, 5, 5, 5 },
-                new DateTime(2021, 5, 2, 9, 11, 52),
-                new DateTime(2022, 3, 1, 9, 11, 52)
-            ));
+            users.Add(new User(
+                 "Janusz Mazurek",
+                 "STUDENT",
+                 22,
+                 new int[] { 3, 4, 5, 5, 5 },
+                 new DateTime(2021, 5, 2, 9, 11, 52),
+                 new DateTime(2022, 3, 1, 9, 11, 52)
+             ));
 
             users.Add(new User(
                "Marek Szymański",
@@ -195,7 +193,6 @@ namespace lab_06
                new DateTime(2021, 5, 2, 9, 11, 52),
                new DateTime(2022, 3, 1, 9, 11, 52)
             ));
-
         }
     }
 }
