@@ -63,6 +63,37 @@ namespace lab_06
             var rowCountMarks = (from user in users where user.Marks != null && user.Marks.Length > 0 select users).Count();
 
             Console.WriteLine($"6. Ilość rekordów, dla których podano oceny (nie null i więcej niż 0): {rowCountMarks}");
+
+            //7. Sumę, ilość i średnią wszystkich ocen studentów
+            Console.WriteLine($"7. Sumę, ilość i średnią wszystkich ocen studentów");
+
+            var marksList = from user in users where user.Marks != null select user.Marks;
+            var marks = new List<int>();
+
+            foreach (var a in marksList)
+            {
+                foreach(var m in a)
+                {
+                    marks.Add(m);
+                }
+            }
+
+            var marksSum = marks.Sum();
+            var marksCount = marks.Count();
+            var marksAvg = marks.Average();
+
+            Console.WriteLine($"\tSuma: {marksSum}, ilość: {marksCount}, średnia: {marksAvg}");
+
+            //8. Najlepszą ocenę
+
+            var marksMax = marks.Max();
+            Console.WriteLine($"8. Najlepszą ocenę: {marksMax}");
+
+            //9. Najgorszą  ocenę
+
+            var marksMin = marks.Min();
+            Console.WriteLine($"9. Najgorszą ocenę: {marksMin}");
+
         }
     }
 }
