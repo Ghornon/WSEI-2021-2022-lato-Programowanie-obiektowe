@@ -10,6 +10,8 @@ namespace lab_06
         public Seeds()
         {
             this.Create();
+
+            /*BinnaryFormater.Serialize(users);*/
         }
 
         public void Create()

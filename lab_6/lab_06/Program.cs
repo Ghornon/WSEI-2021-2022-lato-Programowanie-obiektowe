@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Text.Json;
+using System.Text;
+using System.Xml.Serialization;
 
 namespace lab_06
 {
@@ -148,6 +152,50 @@ namespace lab_06
             {
                 Console.WriteLine($"\t{user}");
             }
+
+
+            // Wykonaj serializację i deserializację listy użytkowników oraz jednego użytkownika na 3 sposoby
+
+            Console.WriteLine("Wykonaj serializację i deserializację listy użytkowników oraz jednego użytkownika na 3 sposoby");
+
+            // JSON
+
+            string jsonList = JsonSerializer.Serialize(users);
+            Console.WriteLine($"\t{jsonList}");
+
+            string json = JsonSerializer.Serialize(users.First());
+            Console.WriteLine($"\t{json}");
+
+            User user1 = JsonSerializer.Deserialize<User>(json);
+
+            Console.WriteLine($"\t{user1}");
+
+            // XML
+
+           /* XmlSerializer serializer = new XmlSerializer(typeof(User));
+            string xml = "";
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                serializer.Serialize(stream, users.First());
+                stream.Flush();
+
+                xml = Encoding.UTF8.GetString(stream.ToArray());
+
+                Console.WriteLine(xml);
+            }
+
+
+            byte[] bytes = Encoding.UTF8.GetBytes(xml);
+
+            using (MemoryStream stream = new MemoryStream(bytes))
+            {
+                User user = (User)serializer.Deserialize(stream);
+
+                Console.WriteLine("Name: " + user.Name);
+                Console.WriteLine("Age: " + user.Age);
+            }*/
+
         }
     }
 }
