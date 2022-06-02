@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace lab_06
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var users = new Seeds().users;
 
@@ -49,7 +49,6 @@ namespace lab_06
 
             Console.WriteLine($"5. Listy pogrupowanych użytkowników po rolach");
 
-
             foreach (var grouping in groupedByRole)
             {
                 Console.WriteLine(grouping.Key);
@@ -67,7 +66,8 @@ namespace lab_06
             //7. Sumę, ilość i średnią wszystkich ocen studentów
             Console.WriteLine($"7. Sumę, ilość i średnią wszystkich ocen studentów");
 
-            var marks = (from user in users where user.Marks != null
+            var marks = (from user in users
+                         where user.Marks != null
                          from m in user.Marks
                          select m).ToList();
 
@@ -90,8 +90,8 @@ namespace lab_06
             //10. Najlepszego studenta
 
             var students = (from user in users
-                               where user.Marks != null
-                               select new { user = user, marksAvg = user.Marks.ToList().Average(), marksCount = user.Marks.ToList().Count() }).ToList();
+                            where user.Marks != null
+                            select new { user = user, marksAvg = user.Marks.ToList().Average(), marksCount = user.Marks.ToList().Count() }).ToList();
 
             var bestStudent = students.Aggregate((s1, s2) => s1.marksAvg > s2.marksAvg ? s1 : s2);
 
@@ -101,8 +101,53 @@ namespace lab_06
 
             Console.WriteLine("11. Listę studentów, którzy posiadają najmniej ocen");
 
-            var lowCountMarks = students.Aggregate((s1, s2) => s1.marksCount < s2.marksCount ? s1 : s2);
+            var lowCountMarks = (from user in users
+                                 where user.Marks != null
+                                 orderby user.Marks.Length descending
+                                 select user).Take(3);
 
+            foreach (var user in lowCountMarks)
+            {
+                Console.WriteLine($"\t{user}");
+            }
+
+            //12. Listę studentów, którzy posiadają najmniej ocen
+
+            Console.WriteLine("12. Listę studentów, którzy posiadają najwięcej ocen");
+
+            var highCountMarks = (from user in users
+                                  where user.Marks != null
+                                  orderby user.Marks.Length
+                                  select user).Take(3);
+
+            foreach (var user in highCountMarks)
+            {
+                Console.WriteLine($"\t{user}");
+            }
+
+            //13. Listę obiektów zawierających tylko nazwę i średnią ocenę (mapowanie na inny obiekt)
+
+            Console.WriteLine("13. Listę obiektów zawierających tylko nazwę i średnią ocenę (mapowanie na inny obiekt)");
+
+            var objList = from user in users where user.Marks != null select new { name = user.Name, avg = user.Marks.ToList().Average() };
+
+            foreach (var user in objList)
+            {
+                Console.WriteLine($"\tName: {user.name}, AVG: {user.avg}");
+            }
+
+            //14. Studentów posortowanych od najlepszego
+
+            Console.WriteLine("14. Studentów posortowanych od najlepszego");
+
+            var sortedByBestStudens = from user in students
+                                      orderby marksAvg
+                                      select user.user;
+
+            foreach (var user in sortedByBestStudens)
+            {
+                Console.WriteLine($"\t{user}");
+            }
         }
     }
 }
