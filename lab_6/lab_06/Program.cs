@@ -11,7 +11,7 @@ namespace lab_06
             var users = new Seeds().users;
 
             //1. Ilość rekordów w tablicy
-            int count = users.Count(); 
+            int count = users.Count();
             Console.WriteLine($"1. Ilość rekordów w tablicy: {count}");
 
             //2. Listę nazw użytkowników
@@ -25,7 +25,7 @@ namespace lab_06
             }
 
             //3. Posortowanych użytkowników po nazwach
-            IEnumerable<User> sortedUsersByName = from user in users orderby user.Name select user; 
+            IEnumerable<User> sortedUsersByName = from user in users orderby user.Name select user;
 
             Console.WriteLine($"3. Posortowanych użytkowników po nazwach:");
 
@@ -53,10 +53,10 @@ namespace lab_06
             foreach (var grouping in groupedByRole)
             {
                 Console.WriteLine(grouping.Key);
-               /* foreach (var role in grouping)
-                {
-                    Console.WriteLine("\t" + grouping);
-                }*/
+                /* foreach (var role in grouping)
+                 {
+                     Console.WriteLine("\t" + grouping);
+                 }*/
             }
 
             //6. Ilość rekordów, dla których podano oceny (nie null i więcej niż 0)
@@ -67,16 +67,9 @@ namespace lab_06
             //7. Sumę, ilość i średnią wszystkich ocen studentów
             Console.WriteLine($"7. Sumę, ilość i średnią wszystkich ocen studentów");
 
-            var marksList = from user in users where user.Marks != null select user.Marks;
-            var marks = new List<int>();
-
-            foreach (var a in marksList)
-            {
-                foreach(var m in a)
-                {
-                    marks.Add(m);
-                }
-            }
+            var marks = (from user in users where user.Marks != null
+                         from m in user.Marks
+                         select m).ToList();
 
             var marksSum = marks.Sum();
             var marksCount = marks.Count();
@@ -93,6 +86,22 @@ namespace lab_06
 
             var marksMin = marks.Min();
             Console.WriteLine($"9. Najgorszą ocenę: {marksMin}");
+
+            //10. Najlepszego studenta
+
+            var students = (from user in users
+                               where user.Marks != null
+                               select new { user = user, marksAvg = user.Marks.ToList().Average(), marksCount = user.Marks.ToList().Count() }).ToList();
+
+            var bestStudent = students.Aggregate((s1, s2) => s1.marksAvg > s2.marksAvg ? s1 : s2);
+
+            Console.WriteLine($"10. Najlepszego studenta\r\n\t{bestStudent}");
+
+            //11. Listę studentów, którzy posiadają najmniej ocen
+
+            Console.WriteLine("11. Listę studentów, którzy posiadają najmniej ocen");
+
+            var lowCountMarks = students.Aggregate((s1, s2) => s1.marksCount < s2.marksCount ? s1 : s2);
 
         }
     }
