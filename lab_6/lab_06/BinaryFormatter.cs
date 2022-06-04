@@ -11,9 +11,9 @@ namespace lab_06
 {
     public class BinnaryFormater
     {
-        public static void Serialize(List<User> data)
+        public static void Serialize(User data)
         {
-            FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
+            using FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
 
             // Construct a BinaryFormatter and use it to serialize the data to the stream.
             BinaryFormatter formatter = new BinaryFormatter();
@@ -35,7 +35,7 @@ namespace lab_06
         public static void Deserialize()
         {
             // Declare the hashtable reference.
-            List<User> data = null;
+            User data = new User();
 
             // Open the file containing the data that you want to deserialize.
             FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
@@ -45,7 +45,7 @@ namespace lab_06
 
                 // Deserialize the hashtable from the file and
                 // assign the reference to the local variable.
-                data = (List<User>)formatter.Deserialize(fs);
+                data = (User)formatter.Deserialize(fs);
             }
             catch (SerializationException e)
             {

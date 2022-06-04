@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab_06
 {
+    [Serializable]
     public class User
     {
         public string Name { get; set; }
@@ -28,6 +29,8 @@ namespace lab_06
         } // zawsze null gdy ADMIN, MODERATOR lub TEACHER
         public DateTime? CreatedAt { get; set; }
         public DateTime? RemovedAt { get; set; }
+
+        public User() { }
 
         public User(string Name, string Role, int Age, int[] Marks, DateTime? CreatedAt, DateTime? RemovedAt)
         {

@@ -49,17 +49,17 @@ namespace lab_06
             }
 
             //5. Listy pogrupowanych użytkowników po rolach
-            var groupedByRole = users.GroupBy(user => user.Role.Equals(roleNameList));
+            var groupedByRole = users.GroupBy(user => user.Role);
 
             Console.WriteLine($"5. Listy pogrupowanych użytkowników po rolach");
 
             foreach (var grouping in groupedByRole)
             {
                 Console.WriteLine(grouping.Key);
-                /* foreach (var role in grouping)
+                 foreach (var user in grouping)
                  {
-                     Console.WriteLine("\t" + grouping);
-                 }*/
+                     Console.WriteLine("\t" + user.Name);
+                 }
             }
 
             //6. Ilość rekordów, dla których podano oceny (nie null i więcej niż 0)
@@ -172,7 +172,7 @@ namespace lab_06
 
             // XML
 
-           /* XmlSerializer serializer = new XmlSerializer(typeof(User));
+            XmlSerializer serializer = new XmlSerializer(typeof(User));
             string xml = "";
 
             using (MemoryStream stream = new MemoryStream())
@@ -192,10 +192,11 @@ namespace lab_06
             {
                 User user = (User)serializer.Deserialize(stream);
 
-                Console.WriteLine("Name: " + user.Name);
-                Console.WriteLine("Age: " + user.Age);
-            }*/
+                Console.WriteLine(user);
+            }
 
+            BinnaryFormater.Serialize(users.First());
+            BinnaryFormater.Deserialize();
         }
     }
 }
