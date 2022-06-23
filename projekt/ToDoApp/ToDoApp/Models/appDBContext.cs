@@ -7,6 +7,7 @@ namespace ToDoApp.Models
 {
     class AppDBContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Task> Tasks { get; set; }
 
