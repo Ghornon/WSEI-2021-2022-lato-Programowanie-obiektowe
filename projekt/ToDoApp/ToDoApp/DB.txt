@@ -1,0 +1,8 @@
+Open command prompt
+Run SqlLocalDB.exe start v11.0
+Run SqlLocalDB.exe info v11.0
+Copy the Instance pipe name that starts with np:\...
+In Visual Studio select TOOLS > Connect to Database...
+For Server Name enter (localdb)\v11.0. If it didn't work, use the Instance pipe name that you copied earlier. You can also use this to connect with SQL Management Studio.
+Select the database on next dropdown list
+Click OK

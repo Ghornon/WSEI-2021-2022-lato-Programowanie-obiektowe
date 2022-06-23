@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ToDoApp.Models
 {
-    class appDBContext : DbContext
+    class AppDBContext : DbContext
     {
         public DbSet<Status> Statuses { get; set; }
-        public string ConnectionString = @"Server=(localdb)\\MSSQLLocalDB;Database=SomeDbName;Trusted_Connection=True";
+        public DbSet<Task> Tasks { get; set; }
+
+        public string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ToDoAppDB;Integrated Security=True";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(this.ConnectionString);

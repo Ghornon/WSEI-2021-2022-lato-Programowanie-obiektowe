@@ -8,7 +8,7 @@ using ToDoApp.Models;
 
 namespace ToDoApp.Migrations
 {
-    [DbContext(typeof(appDBContext))]
+    [DbContext(typeof(AppDBContext))]
     [Migration("20220622213317_AddStatusSeedDataToDB")]
     partial class AddStatusSeedDataToDB
     {

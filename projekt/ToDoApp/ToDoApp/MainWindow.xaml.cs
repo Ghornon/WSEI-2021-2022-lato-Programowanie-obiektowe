@@ -26,9 +26,9 @@ namespace ToDoApp
         {
             InitializeComponent();
 
-            using (appDBContext db = new appDBContext())
+            using (AppDBContext db = new AppDBContext())
             {
-                Console.WriteLine($"Database ConnectionString: {db.ConnectionString}.");
+
             }
         }
 

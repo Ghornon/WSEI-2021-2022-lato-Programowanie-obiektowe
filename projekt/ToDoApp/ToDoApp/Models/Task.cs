@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Models
 {
-    class Status
+    class Task
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public override string ToString() => this.Name;
+        public DateTime? Date { get; set; }
+        public int StatusId { get; set; }
+        public Status Status { get; set; }
+        
     }
 }
