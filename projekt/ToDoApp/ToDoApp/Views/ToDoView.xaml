@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoApp.Views"
         mc:Ignorable="d"
-        Title="ToDoView" Height="450" Width="800">
+        Title="ToDoView" Height="450" Width="800" SizeToContent="Manual" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="160*"/>
@@ -28,7 +28,7 @@
             <Button Name="ManageTagsButton" Content="Manage tags" HorizontalAlignment="Left" Margin="400,115,0,0" VerticalAlignment="Top" Width="344"/>
             <Button Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Margin="400,140,0,0" VerticalAlignment="Top" Width="344" Click="SignOutButton_Click"/>
         </Grid>
-        <DataGrid Name="TasksList" Margin="0,217,0,0" HorizontalAlignment="Center" Width="780" Height="207" VerticalAlignment="Top" Grid.RowSpan="2" SelectionChanged="TasksList_SelectionChanged"/>
+        <DataGrid Name="TasksList" Margin="0,217,0,0" HorizontalAlignment="Center" Width="780" Height="207" VerticalAlignment="Top" Grid.RowSpan="2"  SelectionChanged="TasksList_SelectionChanged"/>
 
 
     </Grid>
