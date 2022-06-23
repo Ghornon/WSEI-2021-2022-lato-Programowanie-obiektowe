@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using System.Data.Entity;
+using ToDoApp.Views;
+using ToDoApp.Models;
 
 namespace ToDoApp
 {
@@ -25,6 +25,19 @@ namespace ToDoApp
         public MainWindow()
         {
             InitializeComponent();
+
+            using (appDBContext db = new appDBContext())
+            {
+                Console.WriteLine($"Database ConnectionString: {db.ConnectionString}.");
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new ToDoView();
+
+            window.Owner = this;
+            window.ShowDialog();
         }
     }
 }
