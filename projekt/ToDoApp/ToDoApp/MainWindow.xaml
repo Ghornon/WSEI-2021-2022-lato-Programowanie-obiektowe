@@ -32,7 +32,7 @@
         <TextBox x:Name="Login" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" Text="Login:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="5" Width="270" Height="38" TextAlignment="Center" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF4D4D4D"/>
         <TextBox x:Name="Password" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" Text="Password:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="5" Width="270" Height="38" TextAlignment="Center" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FF4D4D4D"/>
         <Button Name="SignInButton" Content="Sign in" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="5" Height="38" Width="270" Click="SignInButton_Click"/>
-        <Button Name="SignUpButton" Content="Sign up" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="5" Height="38" Width="270"/>
+        <Button Name="SignUpButton" Content="Sign up" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="5" Height="38" Width="270" Click="SignUpButton_Click"/>
         <Image Margin="31,58,31,5" Grid.RowSpan="3" Stretch="Fill" Source="vector-checklist-icon.jpg" Grid.ColumnSpan="3" Grid.Column="2"/>
 
     </Grid>

@@ -17,8 +17,12 @@ namespace ToDoApp.Views
 
         public ToDoView(AuthHelper authHelper)
         {
-            InitializeComponent();
             this.authHelper = authHelper;
+
+            if (!this.authHelper.IsAuthenticated)
+                return;
+
+            InitializeComponent();
 
             using (context = new AppDBContext())
             {
@@ -37,6 +41,7 @@ namespace ToDoApp.Views
             using (context = new AppDBContext())
             {
                 var query = from task in context.Tasks
+                            where task.UserId == authHelper.User.Id
                             orderby task.Date
                             select new TasksListView(task.Id, task.Name, task.Status.Name, task.Date);
 

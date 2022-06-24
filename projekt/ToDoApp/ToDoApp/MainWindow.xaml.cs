@@ -44,5 +44,13 @@ namespace ToDoApp
             window.Owner = this;
             window.ShowDialog();
         }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new SignUpView();
+
+            window.Owner = this;
+            window.ShowDialog();
+        }
     }
 }

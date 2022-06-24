@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoApp.Views"
         mc:Ignorable="d"
-        Title="ToDoView" Height="450" Width="800" SizeToContent="Manual" ResizeMode="NoResize">
+        Title="ToDo Tasks" Height="450" Width="800" SizeToContent="Manual" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="160*"/>
