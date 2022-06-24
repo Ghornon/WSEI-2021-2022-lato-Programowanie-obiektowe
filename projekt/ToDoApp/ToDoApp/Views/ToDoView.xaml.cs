@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using ToDoApp.Helpers;
 using ToDoApp.Models;
 
 namespace ToDoApp.Views
@@ -21,14 +13,17 @@ namespace ToDoApp.Views
     public partial class ToDoView : Window
     {
         private AppDBContext context;
-        public ToDoView()
+        private AuthHelper authHelper { get; }
+
+        public ToDoView(AuthHelper authHelper)
         {
             InitializeComponent();
+            this.authHelper = authHelper;
 
-            using(context = new AppDBContext())
+            using (context = new AppDBContext())
             {
                 var statuses = context.Statuses.ToList();
-                foreach(Status status in statuses)
+                foreach (Status status in statuses)
                 {
                     TaskStatus.Items.Add(status);
                 }
@@ -43,7 +38,7 @@ namespace ToDoApp.Views
             {
                 var query = from task in context.Tasks
                             orderby task.Date
-                            select new TasksListView( task.Id, task.Name, task.Status.Name, task.Date );
+                            select new TasksListView(task.Id, task.Name, task.Status.Name, task.Date);
 
                 TasksList.ItemsSource = query.ToList();
             }
@@ -51,13 +46,12 @@ namespace ToDoApp.Views
 
         private void SignOutButton_Click(object sender, RoutedEventArgs e)
         {
-            var window = new MainWindow();
-            window.Owner = this;
+            this.Close();
         }
 
         private void TaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
-            if(TaskName.Text == null || TaskStatus.SelectedItem == null)
+            if (TaskName.Text == null || TaskStatus.SelectedItem == null)
             {
                 MessageBox.Show("Please make sure all data has been entered!");
                 return;
@@ -67,7 +61,8 @@ namespace ToDoApp.Views
             {
                 Name = TaskName.Text,
                 StatusId = (TaskStatus.SelectedItem as Status).Id,
-                Date = TaskDate.SelectedDate
+                Date = TaskDate.SelectedDate,
+                UserId = this.authHelper.User.Id
             };
 
             using (context = new AppDBContext())
@@ -98,7 +93,6 @@ namespace ToDoApp.Views
             }
 
             this.RefreshData();
-
         }
 
         private void TaskUpdateButton_Click(object sender, RoutedEventArgs e)
@@ -118,13 +112,13 @@ namespace ToDoApp.Views
                 task.Name = TaskName.Text;
                 task.StatusId = (TaskStatus.SelectedItem as Status).Id;
                 task.Date = TaskDate.SelectedDate;
+                task.UserId = this.authHelper.User.Id;
 
                 context.Tasks.Update(task);
                 context.SaveChanges();
             }
 
             this.RefreshData();
-
         }
 
         private void TasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -150,6 +144,7 @@ namespace ToDoApp.Views
     {
         // task.Id, task.Name, StatusName = task.Status.Name, task.Date
         public int Id { get; set; }
+
         public string Name { get; set; }
         public string StatusName { get; set; }
         public DateTime? Date { get; set; }

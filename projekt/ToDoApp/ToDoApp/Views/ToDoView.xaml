@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Center" Margin="0,10,0,103" Width="780">
             <Label Content="ToDo task manager
-                   " HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.584,-0.19"/>
+                   " HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.584,-0.19" Width="116"/>
             <Label Content="Name" HorizontalAlignment="Left" Margin="36,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
             <Label Content="Status" HorizontalAlignment="Left" Margin="36,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
             <Label Content="Date" HorizontalAlignment="Left" Margin="36,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
