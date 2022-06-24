@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using ToDoApp.Helpers;
 using ToDoApp.Models;
 using ToDoApp.Views;
-using System.Linq;
 
 namespace ToDoApp
 {
@@ -16,13 +16,6 @@ namespace ToDoApp
         public MainWindow()
         {
             InitializeComponent();
-
-            using (AppDBContext context = new AppDBContext())
-            {
-                var user = context.Users.Find(1);
-
-                authHelper = new AuthHelper(user);
-            }
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
