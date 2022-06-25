@@ -1,35 +1,48 @@
 ﻿<Window x:Class="ToDoApp.Views.ToDoView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ToDoApp.Views"
         mc:Ignorable="d"
         Title="ToDo Tasks" Height="450" Width="800" SizeToContent="Manual" ResizeMode="NoResize">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="160*"/>
-            <RowDefinition Height="57*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Center" Margin="0,10,0,103" Width="780">
-            <Label Content="ToDo task manager
-                   " HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.584,-0.19" Width="116"/>
-            <Label Content="Name" HorizontalAlignment="Left" Margin="36,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
-            <Label Content="Status" HorizontalAlignment="Left" Margin="36,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
-            <Label Content="Date" HorizontalAlignment="Left" Margin="36,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
-            <Label Content="Tags" HorizontalAlignment="Left" Margin="36,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.118,-0.924"/>
-            <TextBox Name="TaskName" HorizontalAlignment="Left" Margin="92,40,0,0" Text="Task 1 name" TextWrapping="Wrap" VerticalAlignment="Top" Width="288"/>
-            <ComboBox Name="TaskStatus" HorizontalAlignment="Left" Margin="92,69,0,0" VerticalAlignment="Top" Width="288"/>
-            <DatePicker Name="TaskDate" HorizontalAlignment="Left" Margin="92,99,0,0" VerticalAlignment="Top" Width="288" FirstDayOfWeek="Monday"/>
-            <ListBox Name="TaskTags" Margin="92,128,400,10"/>
-            <Button Name="TaskCreateButton" Content="Create" HorizontalAlignment="Left" Margin="400,40,0,0" VerticalAlignment="Top" Width="344" Click="TaskCreateButton_Click"/>
-            <Button Name="TaskUpdateButton" Content="Update" HorizontalAlignment="Left" Margin="400,65,0,0" VerticalAlignment="Top" Width="344" Click="TaskUpdateButton_Click"/>
-            <Button Name="TaskDeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="400,90,0,0" VerticalAlignment="Top" Width="344" Click="TaskDeleteButton_Click"/>
-            <Button Name="ManageTagsButton" Content="Manage tags" HorizontalAlignment="Left" Margin="400,115,0,0" VerticalAlignment="Top" Width="344"/>
-            <Button Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Margin="400,140,0,0" VerticalAlignment="Top" Width="344" Click="SignOutButton_Click"/>
-        </Grid>
-        <DataGrid Name="TasksList" Margin="0,217,0,0" HorizontalAlignment="Center" Width="780" Height="207" VerticalAlignment="Top" Grid.RowSpan="2"  SelectionChanged="TasksList_SelectionChanged"/>
-
-
+        <Label Content="ToDo task manager" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="7" VerticalAlignment="Center" Width="116" />
+        <Label Content="Name" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+        <Label Content="Status"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" />
+        <Label Content="Date" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" />
+        <Label Content="Tags"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" />
+        <TextBox Name="TaskName"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" Height="33" FontSize="18" />
+        <ComboBox Name="TaskStatus"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" Height="33" FontSize="18" />
+        <DatePicker Name="TaskDate"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" FirstDayOfWeek="Monday" Height="33" FontSize="18" />
+        <ListBox Name="TaskTags"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Center" Height="67" Width="258" />
+        <Button Name="TaskCreateButton" Content="Create" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="TaskCreateButton_Click"  />
+        <Button Name="TaskUpdateButton" Content="Update" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  Click="TaskUpdateButton_Click" />
+        <Button Name="TaskDeleteButton" Content="Delete" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  Click="TaskDeleteButton_Click" />
+        <Button Name="ManageTagsButton" Content="Manage tags" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  />
+        <Button Name="SignOutButton" Content="Sign out" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  Click="SignOutButton_Click" />
+        <DataGrid Name="TasksList" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="7" Grid.RowSpan="3" VerticalAlignment="Center" SelectionChanged="TasksList_SelectionChanged" Height="111" Width="594" />
     </Grid>
 </Window>
