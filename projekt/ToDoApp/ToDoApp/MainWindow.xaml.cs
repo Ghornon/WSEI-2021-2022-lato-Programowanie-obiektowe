@@ -20,7 +20,7 @@ namespace ToDoApp
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Login.Text == null || Login.Text == "Login:" || Password.Text == null || Password.Text == "Password:")
+            if (Login.Text == null || Login.Text == "Login:" || Password.Password == null || Password.Password == "Password:")
             {
                 MessageBox.Show("Bad login or password!");
                 return;
@@ -28,7 +28,7 @@ namespace ToDoApp
 
             using (AppDBContext context = new AppDBContext())
             {
-                var user = context.Users.Where(user => user.Login == Login.Text && user.Password == Password.Text).FirstOrDefault();
+                var user = context.Users.Where(user => user.Login == Login.Text && user.Password == Password.Password).FirstOrDefault();
 
                 if (user == null)
                 {

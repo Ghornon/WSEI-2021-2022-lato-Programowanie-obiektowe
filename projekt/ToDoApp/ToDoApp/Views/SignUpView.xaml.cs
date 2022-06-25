@@ -18,7 +18,7 @@ namespace ToDoApp.Views
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Login.Text == null || Login.Text == "Login:" || Password.Text == null || Password.Text == "Password:" || Password.Text != Repeat.Text || Username.Text == null || Username.Text == "Name:" || Email.Text == null || Email.Text == "Email:")
+            if (Login.Text == null || Login.Text == "Login:" || Password.Password == null || Password.Password == "Password:" || Password.Password != Repeat.Password || Username.Text == null || Username.Text == "Name:" || Email.Text == null || Email.Text == "Email:")
             {
                 MessageBox.Show("Please make sure all data has been entered!");
                 return;
@@ -43,7 +43,7 @@ namespace ToDoApp.Views
                 var newUser = new User
                 {
                     Login = Login.Text,
-                    Password = Password.Text,
+                    Password = Password.Password,
                     Name = Username.Text,
                     Email = Email.Text
                 };
