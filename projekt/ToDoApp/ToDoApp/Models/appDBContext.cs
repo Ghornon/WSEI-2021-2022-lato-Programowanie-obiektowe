@@ -2,11 +2,13 @@
 
 namespace ToDoApp.Models
 {
-    internal class AppDBContext : DbContext
+    public class AppDBContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<TaggedTask> TaggedTasks { get; set; }
 
         public string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ToDoAppDB;Integrated Security=True";
 

@@ -42,6 +42,7 @@ namespace ToDoApp
             var window = new ToDoView(this.authHelper);
 
             window.Owner = this;
+            this.Hide();
             window.ShowDialog();
         }
 
@@ -50,6 +51,7 @@ namespace ToDoApp
             var window = new SignUpView();
 
             window.Owner = this;
+            this.Hide();
             window.ShowDialog();
         }
     }

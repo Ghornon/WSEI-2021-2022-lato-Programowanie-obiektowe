@@ -37,11 +37,11 @@
         <TextBox Name="TaskName"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" Height="33" FontSize="18" />
         <ComboBox Name="TaskStatus"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" Height="33" FontSize="18" />
         <DatePicker Name="TaskDate"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" FirstDayOfWeek="Monday" Height="33" FontSize="18" />
-        <ListBox Name="TaskTags"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Center" Height="67" Width="258" />
+        <ListBox Name="TaskTags"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Center" Height="67" Width="258" SelectionMode="Multiple" />
         <Button Name="TaskCreateButton" Content="Create" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="TaskCreateButton_Click"  />
         <Button Name="TaskUpdateButton" Content="Update" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  Click="TaskUpdateButton_Click" />
         <Button Name="TaskDeleteButton" Content="Delete" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  Click="TaskDeleteButton_Click" />
-        <Button Name="ManageTagsButton" Content="Manage tags" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  />
+        <Button Name="ManageTagsButton" Content="Manage tags" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="ManageTagsButton_Click"  />
         <Button Name="SignOutButton" Content="Sign out" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33"  Click="SignOutButton_Click" />
         <DataGrid Name="TasksList" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="7" Grid.RowSpan="3" VerticalAlignment="Center" SelectionChanged="TasksList_SelectionChanged" Height="111" Width="594" />
     </Grid>

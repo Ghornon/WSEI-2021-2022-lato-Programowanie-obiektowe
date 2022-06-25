@@ -1,0 +1,38 @@
+﻿<Window x:Class="ToDoApp.Views.TagsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoApp.Views"
+        mc:Ignorable="d"
+        Title="Tag manager" SizeToContent="Manual" ResizeMode="NoResize" Height="260" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="Tag manager" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="7" VerticalAlignment="Center" Width="116" />
+        <Label Content="Tag name" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" />
+        <TextBox Name="TagName"  Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="258" Height="33" FontSize="18" />
+        <ListBox Name="TagsList"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="3" VerticalAlignment="Center" Height="114" Width="340" SelectionChanged="TagsList_SelectionChanged" />
+        <Button Name="TagCreateButton" Content="Create" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="TagCreateButton_Click" />
+        <Button Name="TagUpdateButton" Content="Update" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="TagUpdateButton_Click" />
+        <Button Name="TagDeleteButton" Content="Delete" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="TagDeleteButton_Click" />
+        <Button Name="CancelButton" Content="Cancel" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center" Width="246" Height="33" Click="CancelButton_Click" />
+    </Grid>
+</Window>

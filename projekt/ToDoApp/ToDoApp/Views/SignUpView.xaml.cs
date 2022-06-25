@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Windows;
 using ToDoApp.Models;
-using System.Linq;
 
 namespace ToDoApp.Views
 {
@@ -29,7 +29,7 @@ namespace ToDoApp.Views
                 MessageBox.Show("Incorrect email!");
                 return;
             }
-            
+
             using (var context = new AppDBContext())
             {
                 var user = context.Users.Where(user => user.Login == Login.Text).FirstOrDefault();
@@ -57,7 +57,14 @@ namespace ToDoApp.Views
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Owner.Show();
             this.Close();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            this.Owner.Show();
+            base.OnClosed(e);
         }
     }
 }

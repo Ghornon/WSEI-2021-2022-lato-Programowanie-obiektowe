@@ -1,10 +1,10 @@
 ﻿namespace ToDoApp.Models
 {
-    public class Status
+    public class Tag
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public override string ToString() => this.Name;
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }
