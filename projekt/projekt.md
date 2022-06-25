@@ -3,53 +3,58 @@
 ## **Hormonogram pracy dla projektu Dziennik Ocen**
 
 1. **Okno Logowania**
-    1. Pole do wprowadzania danych oraz niezbÍdne przyciski
-    2. Komunikaty ognoúnie b≥ÍdÛw logowania (z≥y login/has≥o/ uøytkownik nie istnieje)
-    3. Tymczasowe dane logowania
+    1. Pole do wprowadzania danych oraz niezbƒôdne przyciski
+    2. Komunikaty ogno≈õnie b≈Çƒôd√≥w logowania (z≈Çy login/has≈Ço/ u≈ºytkownik nie istnieje)
+    3. Tymczasowe dane logowania (admin/admin)
 2. **Okno Rejestracji**
-    1. Pole do wprowadzania danych oraz niezbÍdne przyciski
-    2. Komunikaty ognoúnie b≥ÍdÛw logowania (z≥y login/has≥o, uøytkownik juø istnieje)
-    3. Dane osoby zak≥adajπcej konto (email, imie, nazwisko, adres, pesel)
-    4. MoøliwoúÊ zalogowania sie po rejestracji
-3. **Okno moje przedmioty**
-    1. Tabelka z przedmiotami
-        1. Nazwa przedmiotu
-        2. Nauczyciel
-        3. Sala
-        4. Przycisk do ookna oceny z przedmiotu
-        5. Przycisk dodaj oceny dla nauczyciela
-    2. Wyszukiwarka po nazwie przedmiotu lub nauczycielu lub sali
-    3. Tymczasowe dane do weryfikacji
-4. **Okno moje oceny z przedmiotu**
-    1. Tabelka z ocenami
-        1. Nazwa
-        2. Opis oceny
-        3. Ocena
-5. **Okno dodaj ocenÍ**
-    1. Okno dodaj ocene
-        1. UczeÒ
-        2. Nazwa
-        3. Opis
-        4. Ocena
-        5. Uczen
-6. **Okno mÛj profil**
-    1. Podglπd profilu uøytkownika, dane osobowe
-7. **Okno ustawienie uøytkownika**
-    1. MoøliwoúÊ edycji danych podanych podczas rejestracji (email, imie, nazwisko, pesel)
-    2. Jeøeli nauczyciel to dodatkowe okno klasa i przedmiot
+    1. Pole do wprowadzania danych oraz niezbƒôdne przyciski
+        1. Login
+        2. Password
+        3. Repat password
+        4. Name
+        5. Email
+    2. Komunikaty ogno≈õnie b≈Çƒôd√≥w logowania (z≈Çy login/has≈Ço, u≈ºytkownik ju≈º istnieje, b≈Çƒôdny emial)
+    3. Dane osoby zak≈ÇadajƒÖcej konto (login, has≈Ço, email, imie)
+    4. Mo≈ºliwo≈õƒá zalogowania sie po rejestracji
+3. **ToDo view**
+    1. Tabelka z zadaniami
+        1. ID
+        2. Name
+        3. StatusName
+        4. Tags
+        5. Date
+    2. Pola do tworzenia/edytowania zada≈Ñ
+        1. Name
+        2. Status (Lista)
+        3. Date (Date picker)
+        4. Tagi (Lista)
+    3. Przyciski
+        1. Create
+        2. Update
+        3. Delete
+        4. Manage tags
+        5. Sign out
+4. **Tags view**
+    1. Lista z tagami
+    2. Pole do wprowadzania nazwy
+        1. Create
+        2. Update
+        3. Delete
+        4. Cancel
 
 #### Techniczne
 
 1. **Baza danych**
-    1. Tabela uøytkownicy
-    2. Tabela przedmioty
-    3. Tabelka oceny
-    4. Tabela nauczyciele
+    1. Tabela u≈ºytkownicy
+    2. Tabela zadania
+    3. Tabelka tagi
+    4. Tabela otagowane zadania
 2. **ORM - operacje na bazie**
-    1. Dodawanie rekordÛw w bazie
-    2. Usuwanie rekorÛw w bazie
-    3. Pobieranie rekordÛw z bazy
+    1. Dodawanie rekord√≥w w bazie
+    2. Usuwanie rekord√≥w w bazie
+    3. Pobieranie rekord√≥w z bazy
 3. **Walidacja danych**
     1. Podczas logowania
     2. Podczas rejestracji
-    3. Podczas dodawania ocen
+    3. Podczas dodawania zada≈Ñ
+    4. Podczas dodawania tag√≥w
