@@ -1,5 +1,8 @@
 ﻿namespace ToDoApp.Models
 {
+    /// <summary>
+    ///   Model of Status
+    /// </summary>
     public class Status
     {
         public int Id { get; set; }

@@ -13,9 +13,14 @@ namespace ToDoApp.Views
     /// </summary>
     public partial class ToDoView : Window
     {
+        /// <summary>The context</summary>
         private AppDBContext context;
+        /// <summary>Gets the authentication helper.</summary>
+        /// <value>The authentication helper.</value>
         private AuthHelper authHelper { get; }
 
+        /// <summary>Initializes a new instance of the <see cref="ToDoView" /> class.</summary>
+        /// <param name="authHelper">The authentication helper.</param>
         public ToDoView(AuthHelper authHelper)
         {
             this.authHelper = authHelper;
@@ -37,7 +42,8 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
-        public void RefreshData()
+        /// <summary>Refreshes the data.</summary>
+        private void RefreshData()
         {
             using (context = new AppDBContext())
             {
@@ -59,12 +65,18 @@ namespace ToDoApp.Views
             }
         }
 
+        /// <summary>Handles the Click event of the SignOutButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SignOutButton_Click(object sender, RoutedEventArgs e)
         {
             this.Owner.Show();
             this.Close();
         }
 
+        /// <summary>Handles the Click event of the TaskCreateButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void TaskCreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (TaskName.Text == null || TaskStatus.SelectedItem == null)
@@ -109,6 +121,9 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
+        /// <summary>Handles the Click event of the TaskDeleteButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void TaskDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (TasksList.SelectedItem == null)
@@ -135,6 +150,9 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
+        /// <summary>Handles the Click event of the TaskUpdateButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void TaskUpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (TasksList.SelectedItem == null)
@@ -192,6 +210,9 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
+        /// <summary>Handles the SelectionChanged event of the TasksList control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs" /> instance containing the event data.</param>
         private void TasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TasksList.SelectedItem == null)
@@ -219,6 +240,9 @@ namespace ToDoApp.Views
             }
         }
 
+        /// <summary>Handles the Click event of the ManageTagsButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void ManageTagsButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new TagsView(this.authHelper);
@@ -228,12 +252,17 @@ namespace ToDoApp.Views
             this.Hide();
             window.ShowDialog();
         }
+        /// <summary>Raises the <see cref="E:System.Windows.Window.Closed">Closed</see> event.</summary>
+        /// <param name="e">An <see cref="T:System.EventArgs">EventArgs</see> that contains the event data.</param>
         protected override void OnClosed(EventArgs e)
         {
             this.Owner.Show();
             base.OnClosed(e);
         }
 
+        /// <summary>Creates new window_issueclose.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void NewWindow_IssueClose(object sender, EventArgs e)
         {
             this.RefreshData();
@@ -242,16 +271,23 @@ namespace ToDoApp.Views
         }
     }
 
+    /// <summary>
+    ///   Generate output for a data grid
+    ///   Generate output for a data grid
+    /// </summary>
     public class TasksListView
     {
-        // task.Id, task.Name, StatusName = task.Status.Name, task.Date
         public int Id { get; set; }
-
         public string Name { get; set; }
         public string StatusName { get; set; }
         public string Tags { get; set; }
         public DateTime? Date { get; set; }
 
+        /// <summary>Initializes a new instance of the <see cref="TasksListView" /> class.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="statusName">Name of the status.</param>
+        /// <param name="date">The date.</param>
         public TasksListView(int id, string name, string statusName, DateTime? date)
         {
             this.Id = id;
@@ -261,6 +297,11 @@ namespace ToDoApp.Views
             this.Date = date;
         }
 
+        /// <summary>Gets the tags in string format.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        ///   Tags in string separated by comma
+        /// </returns>
         private string GetTagsString(int id)
         {
             var tagsString = "";

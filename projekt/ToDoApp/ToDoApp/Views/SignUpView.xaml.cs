@@ -11,11 +11,15 @@ namespace ToDoApp.Views
     /// </summary>
     public partial class SignUpView : Window
     {
+        /// <summary>Initializes a new instance of the <see cref="SignUpView" /> class.</summary>
         public SignUpView()
         {
             InitializeComponent();
         }
 
+        /// <summary>Handles the Click event of the SignUpButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             if (Login.Text == null || Login.Text == "Login:" || Password.Password == null || Password.Password == "Password:" || Password.Password != Repeat.Password || Username.Text == null || Username.Text == "Name:" || Email.Text == null || Email.Text == "Email:")
@@ -55,12 +59,17 @@ namespace ToDoApp.Views
             }
         }
 
+        /// <summary>Handles the Click event of the CancelButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Owner.Show();
             this.Close();
         }
 
+        /// <summary>Raises the <see cref="E:System.Windows.Window.Closed">Closed</see> event.</summary>
+        /// <param name="e">An <see cref="T:System.EventArgs">EventArgs</see> that contains the event data.</param>
         protected override void OnClosed(EventArgs e)
         {
             this.Owner.Show();

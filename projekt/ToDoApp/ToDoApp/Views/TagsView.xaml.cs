@@ -11,11 +11,24 @@ namespace ToDoApp.Views
     /// </summary>
     public partial class TagsView : Window
     {
+        /// <summary>The context</summary>
         private AppDBContext context;
+
+        /// <summary>Gets the authentication helper.</summary>
+        /// <value>The authentication helper.</value>
         private AuthHelper authHelper { get; }
 
+        /// <summary>
+        ///   Issue onClose event
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         public delegate void IssueCloseDelegate(object sender, EventArgs e);
+
         public event IssueCloseDelegate IssueClose;
+
+        /// <summary>Initializes a new instance of the <see cref="TagsView" /> class.</summary>
+        /// <param name="authHelper">The authentication helper.</param>
         public TagsView(AuthHelper authHelper)
         {
             this.authHelper = authHelper;
@@ -24,6 +37,8 @@ namespace ToDoApp.Views
 
             this.RefreshData();
         }
+
+        /// <summary>Refreshes the data.</summary>
         private void RefreshData()
         {
             using (context = new AppDBContext())
@@ -39,6 +54,9 @@ namespace ToDoApp.Views
             }
         }
 
+        /// <summary>Handles the Click event of the CancelButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             if (IssueClose != null)
@@ -47,6 +65,9 @@ namespace ToDoApp.Views
             this.Owner.Show();
         }
 
+        /// <summary>Handles the Click event of the TagCreateButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void TagCreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (TagName.Text == null)
@@ -78,6 +99,9 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
+        /// <summary>Handles the Click event of the TagUpdateButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void TagUpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (TagsList.SelectedItem == null)
@@ -100,6 +124,9 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
+        /// <summary>Handles the Click event of the TagDeleteButton control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void TagDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (TagsList.SelectedItem == null)
@@ -124,6 +151,9 @@ namespace ToDoApp.Views
             this.RefreshData();
         }
 
+        /// <summary>Handles the SelectionChanged event of the TagsList control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs" /> instance containing the event data.</param>
         private void TagsList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (TagsList.SelectedItem == null)
@@ -131,6 +161,9 @@ namespace ToDoApp.Views
 
             TagName.Text = TagsList.SelectedItem.ToString();
         }
+
+        /// <summary>Raises the <see cref="E:System.Windows.Window.Closed">Closed</see> event.</summary>
+        /// <param name="e">An <see cref="T:System.EventArgs">EventArgs</see> that contains the event data.</param>
         protected override void OnClosed(EventArgs e)
         {
             if (IssueClose != null)

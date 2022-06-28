@@ -1,5 +1,8 @@
 ﻿namespace ToDoApp.Models
 {
+    /// <summary>
+    ///   Model of Tag
+    /// </summary>
     public class Tag
     {
         public int Id { get; set; }

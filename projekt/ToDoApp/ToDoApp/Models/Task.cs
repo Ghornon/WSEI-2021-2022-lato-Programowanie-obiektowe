@@ -2,6 +2,9 @@
 
 namespace ToDoApp.Models
 {
+    /// <summary>
+    ///   Model of Task
+    /// </summary>
     public class Task
     {
         public int Id { get; set; }

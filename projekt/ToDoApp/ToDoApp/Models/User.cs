@@ -1,5 +1,8 @@
 ﻿namespace ToDoApp.Models
 {
+    /// <summary>
+    ///   Model of User
+    /// </summary>
     public class User
     {
         public int Id { get; set; }

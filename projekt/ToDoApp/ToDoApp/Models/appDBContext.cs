@@ -2,6 +2,9 @@
 
 namespace ToDoApp.Models
 {
+    /// <summary>
+    ///   DB connection context
+    /// </summary>
     public class AppDBContext : DbContext
     {
         public DbSet<User> Users { get; set; }

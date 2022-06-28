@@ -1,5 +1,8 @@
 ﻿namespace ToDoApp.Models
 {
+    /// <summary>
+    ///   Model of TaggedTask
+    /// </summary>
     public class TaggedTask
     {
         public int Id { get; set; }
