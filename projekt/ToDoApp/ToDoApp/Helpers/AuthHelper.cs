@@ -3,7 +3,8 @@
 namespace ToDoApp.Helpers
 {
     /// <summary>
-    ///   Cross window authentication helper
+    ///   Cross window authentication helper.
+    ///   Tells windows if user is authenticated
     /// </summary>
     public class AuthHelper
     {
