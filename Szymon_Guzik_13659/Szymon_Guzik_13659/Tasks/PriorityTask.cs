@@ -35,7 +35,7 @@ namespace Szymon_Guzik_13659.Tasks
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !this.GetType().Equals(obj.GetType())) return false;
+            if (obj == null || ! this.GetType().Equals(obj.GetType())) return false;
 
             PriorityTask priorityTask = obj as PriorityTask;
 
